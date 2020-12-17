@@ -1,0 +1,19 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "Conway Cubes",
+  "scope": "/",
+  "display": "fullscreen",
+  "start_url": "https://conwaycubes.netlify.app",
+  "short_name": "Conway Cubes",
+  "theme_color": "transparent",
+  "description": "Conway's Game of Life in 3D",
+  "orientation": "portrait",
+  "background_color": "transparent",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [],
+  "url": "https://conwaycubes.netlify.app",
+  "screenshots": [],
+  "generated": "true"
+}

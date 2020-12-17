@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Conway Cubes</title>
+    <meta property="og:title" content="Conway Cubes" />
+    <meta property="og:description" content="AoC 2020 Conway Cubes" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+      * {
+        box-sizing: border-box;
+        outline: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        -webkit-user-select: none;
+        font-family: "JetBrains Mono", monospace;
+      }
+      body {
+        margin: 0;
+        font-size: 12px;
+      }
+      @media screen and (max-width: 512px) {
+        body {
+          font-size: 24px;
+        }
+      }
+      html,
+      body {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+      }
+
+      #viewport {
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: url(/images/cursor.png) 18 18, pointer;
+      }
+
+      .hidden {
+        visibility: hidden;
+        height: 0;
+        font-size: 0;
+      }
+
+      .none {
+        display: none;
+      }
+
+      .info {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        text-align: left;
+        padding-top: 50px;
+        padding-left: 50px;
+        font-size: 1.5rem;
+        color: white;
+        pointer-events: none;
+      }
+
+      .turn {
+        margin-bottom: 10px;
+      }
+
+      .start {
+        background-color: rgb(145, 76, 255);
+        max-width: 90vw;
+        width: 900px;
+        padding: 30px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+      }
+
+      .start > h1 {
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      .start > h2 {
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      .start > textarea {
+        width: 100%;
+        height: 50vh;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .start > input {
+        padding: 10px;
+        font-size: 2rem;
+        width: 100px;
+        background-color: white;
+        border-radius: 10px;
+      }
+
+      .start > span {
+        padding: 10px;
+        font-size: 2rem;
+      }
+
+      .buttons {
+        display: inline;
+        position: absolute;
+        right: 30px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 2rem;
+        background-color: rgb(0, 65, 82);
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .go {
+        background-color: rgb(94, 0, 86);
+      }
+
+      a {
+        color: white;
+        text-decoration: underline;
+      }
+
+      .controls {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        pointer-events: none;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .controls > div {
+        display: inline-block;
+        padding: 10px;
+      }
+
+      .action {
+        font-size: 2em;
+        padding: 10px;
+        cursor: pointer;
+        pointer-events: all;
+      }
+
+      .action:hover {
+        color: rgba(255, 255, 255, 1);
+      }
+    </style>
+  </head>
+  <body role="application">
+    <div class="info hidden">
+      Conway's game of life in 3D.
+    </div>
+    <canvas id="viewport" touch-action="none" role="application"></canvas>
+    <div class="info none" id="info">
+      <p class="turn">&nbsp;Turn: <strong id="turn">0</strong></p>
+      <p class="count">Count: <strong id="count">0</strong></p>
+    </div>
+    <div class="start" id="form">
+      <h1>Hello World!</h1>
+      <h2>
+        Welcome to the Conway Cubes - a 3D Conway's Game of Life simulator
+        inspired by the <a href="https://adventofcode.com/">Advent of Code</a>!
+      </h2>
+      <textarea
+        id="input"
+        placeholder="Write your initial state with # as occupied fields, or leave it empty for a random pattern!
+You can also generate random input and modify it (or not).
+
+Don't worry about uneven rows or invalid characters - they will be handled automatically."
+      ></textarea>
+      <span>Turns:</span>
+      <input type="number" id="turns" min="1" value="12" placeholder="Turns" />
+      <div class="buttons">
+        <button id="generate">GENERATE</button>
+        <button id="start" class="go">START</button>
+      </div>
+    </div>
+    <div class="controls none" id="controls">
+      <div class="pause">
+        <p id="pause" class="action">PAUSE/PLAY</p>
+        <p>(space)</p>
+      </div>
+      <div classs="menu">
+        <p id="menu" class="action">SHOW MENU</p>
+        <p>(enter)</p>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
