@@ -12,9 +12,20 @@ let pause = false
 const generate = () => {
   const w = randomInt(Math.random, 1, 50)
   const h = randomInt(Math.random, 1, 30)
-  const arr = Array.from({ length: h }, () =>
+  let arr = Array.from({ length: h }, () =>
     Array.from({ length: w }, () => (Math.random() > 0.7 ? "#" : ".")),
   )
+
+  if (w % 2 === 0) {
+    arr = arr.map((row) => [
+      ...row.slice(0, w / 2),
+      ...row.slice(0, w / 2).reverse(),
+    ])
+  }
+
+  if (h % 2 === 0) {
+    arr = [...arr.slice(0, h / 2), ...arr.slice(0, h / 2).reverse()]
+  }
 
   return arr.map((row) => row.join("")).join("\n")
 }
