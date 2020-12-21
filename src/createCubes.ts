@@ -1,6 +1,6 @@
 import * as BABYLON from "babylonjs"
 
-const gap = 0.05
+const gap = 0.0
 
 const bases: { [key: number]: BABYLON.Mesh } = {}
 

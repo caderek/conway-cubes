@@ -54,7 +54,7 @@ const createScene = async (engine, canvas) => {
   let scaleNew = 0.1
   let scaleDead = 1
   let interval = 60
-  let scaleDelta = 1 / 60
+  let scaleDelta = 1 / 30
   let ticks = 0
 
   const init = (input: string, turns: number) => {

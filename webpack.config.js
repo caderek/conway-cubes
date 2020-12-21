@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("path")
 
 module.exports = {
   entry: "./src/index.ts",
@@ -21,7 +21,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
-    // host: "192.168.1.17",
+    host: "192.168.1.19",
     port: 3001,
   },
-};
+}
